@@ -3,9 +3,23 @@ name: Deploy to S3
 on:
   push:
     branches:
-      - main  
+      - main
+      - develop  
+      - homolog
+      - pipeline
 
 jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Analys Sonar
+        uses: sonarsource/sonarcloud-github-action@v2.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   deploy:
     runs-on: ubuntu-latest
 
