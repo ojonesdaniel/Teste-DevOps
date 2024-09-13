@@ -6,6 +6,7 @@ on:
       - main
       - develop  
       - homolog
+      - pipeline
 
 jobs:
   sonarcloud:
@@ -17,7 +18,7 @@ jobs:
       - name: Analys Sonar
         uses: sonarsource/sonarcloud-github-action@v2.1.0
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
